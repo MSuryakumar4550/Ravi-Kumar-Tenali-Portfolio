@@ -350,7 +350,7 @@ export const professionalProfiles = [
     label: "Connect",
     icon: "in",
     bgColor: "#0077b5",
-    url: "https://www.linkedin.com/in/ravi-kumar-tenali"
+    url: "https://www.linkedin.com/in/ravi-kumar-tenali-93b72232/"
   },
   {
     name: "Google Scholar",
