@@ -1,5 +1,5 @@
 export const profile = {
-  name: "Dr. T. Ravi Kumar",
+  name: "Mr. Tenali Ravi Kumar",
   title: "Assistant Professor (Senior Grade) — Computer Science & Engineering",
   tagline:
     "20+ years of academic excellence in Computer Science, with 56 international publications, 2 patents published, and an H-index of 7.",
