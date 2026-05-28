@@ -292,7 +292,7 @@ export function Hero({ image }) {
             Educator &nbsp;|&nbsp; Researcher &nbsp;|&nbsp; Senior Technical Trainer
           </p>
           <h1 className="mt-3 text-5xl md:text-7xl font-bold tracking-tight leading-[1.05] drop-shadow-sm">
-            Dr. T. Ravi Kumar
+            Mr. Tenali Ravi Kumar
           </h1>
           <h2 className="mt-3 text-xl md:text-2xl font-semibold text-white/95">
             Assistant Professor (Senior Grade) · Ph.D. Scholar
