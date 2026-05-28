@@ -143,7 +143,7 @@ export function Navbar() {
             TRK
           </div>
           <div className="leading-tight">
-            <div className="font-bold text-base">Dr. T. Ravi Kumar</div>
+            <div className="font-bold text-base">Mr. Tenali Ravi Kumar</div>
             <div className="text-xs text-muted-foreground">
               Assistant Professor (Senior Grade) · CSE
             </div>
