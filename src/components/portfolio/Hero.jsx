@@ -274,7 +274,7 @@ export function Hero({ image }) {
             <div className="w-full h-full rounded-full overflow-hidden ring-4 ring-white">
               <img
                 src={image}
-                alt="Dr. T. Ravi Kumar"
+                alt="Mr. Tenali Ravi Kumar"
                 className="w-full h-full object-cover"
               />
             </div>
