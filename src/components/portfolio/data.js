@@ -1,5 +1,6 @@
 export const profile = {
-  name: "Ravi Kumar Tenali",
+  name: "Mr. Tenali Ravi Kumar",
+  title: "Assistant Professor (Senior Grade) — Computer Science & Engineering",
   degrees: "D.EC.E, B.Tech(CSE), M.Tech(CSE), (Ph.D.)",
   memberships: "MCSI, LMISTE, AMIRED, LMISRD, MCSTA",
   role: "Assistant Professor(SG)",

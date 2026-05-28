@@ -143,7 +143,7 @@ export function Navbar() {
             TRK
           </div>
           <div className="leading-tight">
-            <div className="font-bold text-base">Dr. T. Ravi Kumar</div>
+            <div className="font-bold text-base">Mr. Tenali Ravi Kumar</div>
             <div className="text-xs text-muted-foreground">
               Assistant Professor (Senior Grade) · CSE
             </div>
@@ -274,7 +274,7 @@ export function Hero({ image }) {
             <div className="w-full h-full rounded-full overflow-hidden ring-4 ring-white">
               <img
                 src={image}
-                alt="Dr. T. Ravi Kumar"
+                alt="Mr. Tenali Ravi Kumar"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -292,7 +292,7 @@ export function Hero({ image }) {
             Educator &nbsp;|&nbsp; Researcher &nbsp;|&nbsp; Senior Technical Trainer
           </p>
           <h1 className="mt-3 text-5xl md:text-7xl font-bold tracking-tight leading-[1.05] drop-shadow-sm">
-            Dr. T. Ravi Kumar
+            Mr. Tenali Ravi Kumar
           </h1>
           <p className="mt-2 text-sm md:text-base font-medium text-white/90 leading-relaxed max-w-2xl">
             D.EC.E, B.Tech(CSE), M.Tech(CSE), (Ph.D.), MCSI, LMISTE, AMIRED, LMISRD, MCSTA.
