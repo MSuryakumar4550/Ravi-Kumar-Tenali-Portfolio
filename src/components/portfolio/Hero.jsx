@@ -258,7 +258,7 @@ export function Hero({ image }) {
         }}
       />
 
-      <div className="relative max-w-7xl mx-auto px-6 py-20 md:py-28 grid md:grid-cols-[auto_1fr] gap-10 md:gap-14 items-center">
+      <div className="relative max-w-7xl mx-auto px-6 pt-8 pb-16 md:pt-12 md:pb-20 grid md:grid-cols-[auto_1fr] gap-10 md:gap-14 items-center">
         {/* Circular profile */}
         <motion.div
           initial={{ opacity: 0, scale: 0.85 }}
@@ -294,6 +294,9 @@ export function Hero({ image }) {
           <h1 className="mt-3 text-5xl md:text-7xl font-bold tracking-tight leading-[1.05] drop-shadow-sm">
             Dr. T. Ravi Kumar
           </h1>
+          <p className="mt-2 text-sm md:text-base font-medium text-white/90 leading-relaxed max-w-2xl">
+            D.EC.E, B.Tech(CSE), M.Tech(CSE), (Ph.D.), MCSI, LMISTE, AMIRED, LMISRD, MCSTA.
+          </p>
           <h2 className="mt-3 text-xl md:text-2xl font-semibold text-white/95">
             Assistant Professor (Senior Grade) · Ph.D. Scholar
           </h2>

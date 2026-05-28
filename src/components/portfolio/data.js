@@ -1,9 +1,12 @@
 export const profile = {
-  name: "Dr. T. Ravi Kumar",
-  title: "Assistant Professor (Senior Grade) — Computer Science & Engineering",
+  name: "Ravi Kumar Tenali",
+  degrees: "D.EC.E, B.Tech(CSE), M.Tech(CSE), (Ph.D.)",
+  memberships: "MCSI, LMISTE, AMIRED, LMISRD, MCSTA",
+  role: "Assistant Professor(SG)",
+  department: "Department of Computer Science and Engineering",
+  currentRole: "Saveetha Engineering College, Chennai",
   tagline:
     "20+ years of academic excellence in Computer Science, with 56 international publications, 2 patents published, and an H-index of 7.",
-  currentRole: "Saveetha Engineering College, Chennai",
   email: "engineer.ravikumar@gmail.com",
   location: "Chennai, Tamil Nadu, India",
   scopusId: "57208639080",
@@ -11,7 +14,7 @@ export const profile = {
   googleScholarId: "od5eeAcAAAAJ",
   annaUniversityId: "283382",
   aicteId: "1-3706475401",
-  linkedinId: "Ravi Kumar Tenali",
+  linkedinId: "ravi-kumar-tenali-93b72232",
 };
 
 // Descending chronological order
@@ -350,7 +353,7 @@ export const professionalProfiles = [
     label: "Connect",
     icon: "in",
     bgColor: "#0077b5",
-    url: "https://www.linkedin.com/in/ravi-kumar-tenali"
+    url: "https://www.linkedin.com/in/ravi-kumar-tenali-93b72232/"
   },
   {
     name: "Google Scholar",
