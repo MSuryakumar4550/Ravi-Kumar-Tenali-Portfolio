@@ -8,6 +8,9 @@ function parseSource(source) {
   const yearMatch = source.match(/\b(20\d{2})\b/);
   const year = yearMatch ? yearMatch[1] : null;
 
+  const monthMatch = source.match(/\b(Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)(?:\s*(?:to|-)\s*(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?))?\b/i);
+  const month = monthMatch ? monthMatch[0] : null;
+
   const issnMatch = source.match(/(?:ISSN|P-ISSN):\s*([0-9-]+)/i);
   const issn = issnMatch ? issnMatch[1] : null;
 
@@ -22,7 +25,15 @@ function parseSource(source) {
   let cleanSource = source
     .replace(/(?:ISSN|P-ISSN):\s*[0-9-]+/gi, "")
     .replace(/(?:Pg|Pages):\s*[0-9\s–-]+/gi, "")
-    .replace(/\b(20\d{2})\b/g, "")
+    .replace(/\b(20\d{2})\b/g, "");
+
+  if (month) {
+    // Escape regex characters just in case
+    const escapedMonth = month.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+    cleanSource = cleanSource.replace(new RegExp(escapedMonth, 'gi'), "");
+  }
+
+  cleanSource = cleanSource
     .replace(/\s*,\s*$/, "")
     .replace(/\s*;\s*$/, "")
     .trim();
@@ -31,7 +42,7 @@ function parseSource(source) {
   cleanSource = cleanSource.replace(/\s+/g, " ").replace(/,\s*,/g, ",").trim();
   if (cleanSource.endsWith(",")) cleanSource = cleanSource.slice(0, -1);
 
-  return { year, issn, pages, abbr, cleanSource };
+  return { year, month, issn, pages, abbr, cleanSource };
 }
 
 export function PublicationsSection() {
@@ -66,7 +77,7 @@ export function PublicationsSection() {
       id="publications"
       eyebrow="Research Work"
       title="Publications & Innovation"
-      subtitle={`${patents.length} Patents Published and ${publications.journals.length + publications.conferences.length} Research papers across CSE, Cloud, and IoT domains.`}
+      subtitle={`7 Patents Published and 63 Research papers across CSE, Cloud, and IoT domains.`}
     >
       <div className="space-y-8">
         {/* Tab Header & Search with Glassmorphism styles */}
@@ -79,7 +90,7 @@ export function PublicationsSection() {
               }`}
               style={activeTab === "patents" ? { background: "var(--brand)" } : {}}
             >
-              📜 Patents ({patents.length})
+              📜 Patents (7)
             </button>
             <button
               onClick={() => { setActiveTab("journals"); setSearchQuery(""); setVisibleCount(6); }}
@@ -88,7 +99,7 @@ export function PublicationsSection() {
               }`}
               style={activeTab === "journals" ? { background: "var(--brand)" } : {}}
             >
-              📄 Journals ({publications.journals.length})
+              📄 Journals (46)
             </button>
             <button
               onClick={() => { setActiveTab("conferences"); setSearchQuery(""); setVisibleCount(6); }}
@@ -97,7 +108,7 @@ export function PublicationsSection() {
               }`}
               style={activeTab === "conferences" ? { background: "var(--brand)" } : {}}
             >
-              🎤 Conferences ({publications.conferences.length})
+              🎤 Conferences (17)
             </button>
           </div>
 
@@ -206,9 +217,14 @@ export function PublicationsSection() {
                             {meta.abbr}
                           </span>
                         )}
-                        {meta.year && (
+                        {activeTab === "journals" && item.id >= 15 && item.id <= 44 && (
+                          <span className="px-2.5 py-0.5 rounded-md text-[10px] font-extrabold uppercase bg-orange-50 border border-orange-200 text-[#f36c21] shadow-sm">
+                            Scopus
+                          </span>
+                        )}
+                        {(meta.year || meta.month) && (
                           <span className="px-2.5 py-0.5 rounded-md text-[10px] font-extrabold bg-emerald-50 border border-emerald-100 text-emerald-700">
-                            📅 {meta.year}
+                            📅 {meta.month ? `${meta.month} ` : ""}{meta.year}
                           </span>
                         )}
                         {meta.issn && (
@@ -217,7 +233,7 @@ export function PublicationsSection() {
                           </span>
                         )}
                         {meta.pages && (
-                          <span className="px-2.5 py-0.5 rounded-md text-[10px] font-medium bg-slate-50 border border-slate-200/60 text-slate-600">
+                          <span className="px-2.5 py-0.5 rounded-md text-[10px] font-bold bg-rose-50 border border-rose-100 text-rose-700 shadow-sm">
                             📖 {meta.pages}
                           </span>
                         )}

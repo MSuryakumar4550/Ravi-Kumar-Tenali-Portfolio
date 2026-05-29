@@ -4,9 +4,21 @@ import { profile, professionalProfiles } from "./data";
 
 export function Contact() {
   const [revealed, setRevealed] = useState(false);
+  const [coords, setCoords] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - (rect.left + rect.width / 2)) * 0.12;
+    const y = (e.clientY - (rect.top + rect.height / 2)) * 0.12;
+    setCoords({ x, y });
+  };
+
+  const handleMouseLeave = () => {
+    setCoords({ x: 0, y: 0 });
+  };
 
   return (
-    <section id="contact" className="py-24 px-6 relative overflow-hidden scroll-mt-20">
+    <section id="contact" className="py-12 px-6 relative overflow-hidden scroll-mt-20">
       <div
         className="absolute inset-0 -z-10 opacity-60"
         style={{ background: "var(--gradient-soft)" }}
@@ -40,44 +52,85 @@ export function Contact() {
             Open to academic collaborations, research discussions, mentoring, guest lectures, or corporate train-the-trainer consulting opportunities.
           </p>
 
-          <div className="mt-8 w-full flex flex-col items-center gap-6 justify-center min-h-[140px]">
+          <div className="mt-8 w-full flex flex-col items-center justify-center min-h-[120px]">
             <AnimatePresence mode="wait">
               {!revealed ? (
-                <motion.button
-                  key="enquire-btn"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                  transition={{ duration: 0.25 }}
-                  onClick={() => setRevealed(true)}
-                  className="px-8 py-3.5 rounded-full font-bold text-white text-sm hover:-translate-y-0.5 transition-all cursor-pointer shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-glow)]"
-                  style={{ background: "var(--gradient-hero)" }}
-                >
-                  ✉ Enquire Now
-                </motion.button>
+                <div className="flex flex-col items-center">
+                  {/* Bouncing animated cue pointing down at the button */}
+                  <motion.div
+                    animate={{ y: [0, -5, 0] }}
+                    transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
+                    className="flex flex-col items-center text-[10px] font-extrabold uppercase tracking-widest text-[var(--brand)] gap-1 mb-3 select-none"
+                  >
+                    <span>Click here to enquire</span>
+                    <span className="text-sm">👇</span>
+                  </motion.div>
+
+                  <motion.button
+                    key="enquire-btn"
+                    onMouseMove={handleMouseMove}
+                    onMouseLeave={handleMouseLeave}
+                    animate={{ x: coords.x, y: coords.y }}
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                    transition={{ type: "spring", stiffness: 180, damping: 20, mass: 0.1 }}
+                    onClick={() => setRevealed(true)}
+                    className="px-8 py-3.5 rounded-full font-bold text-white text-sm shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-glow)] cursor-pointer flex items-center gap-2 select-none relative z-10"
+                    style={{ background: "var(--gradient-hero)" }}
+                  >
+                    <span>✉</span>
+                    <span>Enquire Now</span>
+                  </motion.button>
+                </div>
               ) : (
                 <motion.div
                   key="email-revealed"
                   initial={{ opacity: 0, y: 15, scale: 0.95 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   transition={{ duration: 0.4, type: "spring", stiffness: 120 }}
-                  className="flex flex-col items-center gap-3"
+                  className="flex flex-col items-center gap-4 w-full px-4"
                 >
-                  <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest block">
-                    Contact Email
-                  </span>
-                  <a
-                    href={`mailto:${profile.email}`}
-                    className="text-lg md:text-2xl font-black tracking-tight relative group hover:text-[var(--brand)] transition-colors break-all text-center"
-                  >
-                    {profile.email}
-                    <span
-                      className="absolute -bottom-1.5 left-0 h-[3px] w-0 group-hover:w-full transition-all duration-300 rounded-full"
-                      style={{ background: "var(--brand)" }}
-                    />
-                  </a>
-                  <p className="text-xs text-muted-foreground font-medium mt-1">
-                    Click the email above to start your inquiry.
+                  <div className="flex flex-col sm:flex-row gap-6 sm:gap-12 justify-center items-center w-full">
+                    {/* Primary/Personal Email */}
+                    <div className="flex flex-col items-center">
+                      <span className="text-[10px] font-extrabold text-muted-foreground uppercase tracking-widest mb-1.5">
+                        Personal Email
+                      </span>
+                      <a
+                        href={`mailto:${profile.email}`}
+                        className="text-base md:text-xl font-black tracking-tight relative group hover:text-[var(--brand)] transition-colors break-all text-center"
+                      >
+                        {profile.email}
+                        <span
+                          className="absolute -bottom-1 left-0 h-[3px] w-0 group-hover:w-full transition-all duration-300 rounded-full"
+                          style={{ background: "var(--brand)" }}
+                        />
+                      </a>
+                    </div>
+
+                    {/* Divider line for desktop */}
+                    <div className="hidden sm:block w-px h-10 bg-border/80 self-center" />
+
+                    {/* Institutional/Academic Email */}
+                    <div className="flex flex-col items-center">
+                      <span className="text-[10px] font-extrabold text-muted-foreground uppercase tracking-widest mb-1.5">
+                        Academic Email
+                      </span>
+                      <a
+                        href={`mailto:${profile.emailAlt}`}
+                        className="text-base md:text-xl font-black tracking-tight relative group hover:text-[var(--brand)] transition-colors break-all text-center"
+                      >
+                        {profile.emailAlt}
+                        <span
+                          className="absolute -bottom-1 left-0 h-[3px] w-0 group-hover:w-full transition-all duration-300 rounded-full"
+                          style={{ background: "var(--brand)" }}
+                        />
+                      </a>
+                    </div>
+                  </div>
+
+                  <p className="text-xs text-muted-foreground font-medium mt-2">
+                    Click either email above to start your inquiry.
                   </p>
                 </motion.div>
               )}

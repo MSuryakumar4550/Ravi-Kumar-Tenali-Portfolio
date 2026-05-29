@@ -7,8 +7,9 @@ export const profile = {
   department: "Department of Computer Science and Engineering",
   currentRole: "Saveetha Engineering College, Chennai",
   tagline:
-    "20+ years of academic excellence in Computer Science, with 56 international publications, 2 patents published, and an H-index of 7.",
+    "20+ years of academic excellence in Computer Science, with 63 international publications, 7 patents published, and an H-index of 7.",
   email: "engineer.ravikumar@gmail.com",
+  emailAlt: "ravikumar.tenali@saveetha.ac.in",
   location: "Chennai, Tamil Nadu, India",
   scopusId: "57208639080",
   scopusLink: "https://www.scopus.com/authid/detail.uri?authorId=57208639080",
@@ -24,35 +25,30 @@ export const education = [
     period: "2024 – Pursuing",
     degree: "Doctor of Philosophy (Computer Science & Engineering)",
     institution: "Anna University, Chennai, Tamil Nadu, India",
-    score: null,
   },
   {
     period: "2009 – 2011",
     degree: "Master of Technology (Computer Science & Engineering)",
     institution:
       "Swarnandhra College of Engineering & Technology, Narasapuram, A.P. (JNTU Kakinada)",
-    score: "69.12%",
   },
   {
     period: "2001 – 2005",
     degree: "Bachelor of Technology (Computer Science & Engineering)",
     institution:
       "Sri Saradhi Institute of Engineering & Technology, Nuzvid, A.P. (JNTU Hyderabad)",
-    score: "62.32%",
   },
   {
     period: "1997 – 2000",
     degree: "Diploma in Electronics & Communication Engineering",
     institution:
       "S.E.S. & S.N. Murty Polytechnic, Khammam, A.P. (SBTET Hyderabad)",
-    score: "65.95%",
   },
   {
     period: "1996 – 1997",
     degree: "Secondary School Certificate",
     institution:
       "Sri Edara Subbamma Devi Municipal High School, Eluru, A.P.",
-    score: "69.66%",
   },
 ];
 
@@ -111,7 +107,7 @@ export const experience = [
 // Descending chronological order
 export const affiliations = [
   { period: "2018 – Present", name: "International Society for Research and Development (ISRD)", id: "M4150906223" },
-  { period: "2018 – 2021", name: "Institute of Research Engineers and Doctors (IRED)", id: "AM101000582930" },
+  { period: "2018 – Present", name: "Institute of Research Engineers and Doctors (IRED)", id: "AM101000582930" },
   { period: "2012 – Present", name: "Indian Society for Technical Education (ISTE)", id: "LM 83388" },
   { period: "2011 – Present", name: "Computer Science Teachers Association (CSTA)", id: "5009654" },
   { period: "2007 – Present", name: "Computer Society of India (CSI)", id: "N0068502" },
@@ -122,13 +118,12 @@ export const skills = {
   Languages: ["C", "Data Structures", "C++", "Java", "Advanced Java", "J2EE", "Python"],
   Databases: ["Oracle XE", "MS-SQL Server", "MS-Access", "PostgreSQL"],
   "Web Technologies": ["HTML", "DHTML", "XML", "PHP"],
-  Packages: ["MS Office"],
 };
 
 export const stats = [
   { label: "Years of Experience", value: "20+" },
-  { label: "Publications", value: "56" },
-  { label: "Patents Published", value: "2" },
+  { label: "Publications", value: "63" },
+  { label: "Patents Published", value: "7" },
   { label: "Scopus H-Index", value: "7" },
 ];
 
@@ -145,8 +140,8 @@ export const subjects = [
 const rawAdministrativeActivities = [
   { period: "2016 – 2017", role: "Coordinator (CSE-2)", institution: "Andhra Loyola Institute of Engineering & Technology (ALIET)" },
   { period: "2010 – 2012", role: "Exam Section In-charge", institution: "Sri Venkateswara Institute of Science & Information Technology (VISIT)" },
-  { period: "2005 – 2009", role: "Online Exams In-charge", institution: "Aditya Engineering College (AEC) & Sri Sunflower College of Engineering & Technology (SSCET)" },
-  { period: "2005 – Present", role: "Lead Systems & Software Developer", institution: "Developed websites, Library Automation, and Student Attendance Projects" }
+  { period: "2005 – 2009", role: "Online Exams In-charge", institution: "Saveetha Engineering College (SEC), Sri Sunflower College of Engineering & Technology (SSCET), Aditya Engineering College (AEC)" },
+  { period: "2005 – Present", role: "Lead Systems & Software Developer", institution: "Saveetha Engineering College(SEC), Sri Sunflower College of Engineering & Technology (SSCET), Aditya Engineering College (AEC)", description: "Developed websites, Library Automation, and Student Attendance Projects" }
 ];
 
 const rawCertifications = [
@@ -292,27 +287,27 @@ export const patents = [
 export const flagshipTraining = [
   {
     id: "01",
-    title: "Core Programming Training",
-    subtitle: "Strong foundations for engineering cohorts",
-    skills: ["C++ programming", "Java Enterprise Edition", "Object-oriented design", "Problem solving"]
+    title: "Advanced Core Programming & OOP Foundations",
+    subtitle: "Building robust software development foundations through rigorous object-oriented concepts, patterns, and hands-on algorithms.",
+    skills: ["Data Structures & Algorithms", "Enterprise Java (J2EE)", "Object-Oriented Design Patterns", "C++ System Design", "Algorithmic Problem Solving"]
   },
   {
     id: "02",
-    title: "Secure Computing",
-    subtitle: "Security-aware thinking for modern systems",
-    skills: ["Cyber security concepts", "Network vulnerability awareness", "Security classification models", "Cloud security basics"]
+    title: "Cyber Security & Secure Enterprise Architecture",
+    subtitle: "Equipping engineers with security-aware mindsets, focusing on system vulnerabilities, data privacy, cryptographic structures, and secure cloud environments.",
+    skills: ["Network Vulnerability Assessment", "Cryptographic Fundamentals", "Enterprise Security Architecture", "Secure Coding Principles", "Cloud Compliance & Security"]
   },
   {
     id: "03",
-    title: "AI, ML and Data Mining",
-    subtitle: "Applied intelligence for projects and research",
-    skills: ["Machine learning fundamentals", "Feature selection", "Predictive modeling", "Data mining workflows"]
+    title: "Applied Machine Learning & Advanced Data Analytics",
+    subtitle: "Translating theoretical machine learning models and data mining algorithms into practical research discoveries and deployable business solutions.",
+    skills: ["Supervised/Unsupervised Learning", "Feature Engineering & Selection", "Predictive Statistical Analysis", "Data Mining & Wrangling Workflows", "Deep Learning Foundations"]
   },
   {
     id: "04",
-    title: "IoT and Web Technologies",
-    subtitle: "Connected systems and deployable applications",
-    skills: ["IoT architecture", "Sensor-based systems", "Web technologies", "SQL database foundations"]
+    title: "IoT System Integration & Full-Stack Web Architecture",
+    subtitle: "Designing end-to-end connected systems, integrating sensory hardware interfaces with modern scalable full-stack database architectures.",
+    skills: ["Microcontroller & Sensor Ingestion", "Edge Computing & IoT Protocols", "Full-Stack Web Architectures", "Relational & NoSQL Databases", "Cloud IoT Integration"]
   }
 ];
 
@@ -375,7 +370,7 @@ export const professionalProfiles = [
     label: "Profile",
     icon: "W",
     bgColor: "#5c2483",
-    url: "https://www.webofscience.com/"
+    url: "https://www.webofscience.com/wos/author/record/M-4130-2018"
   },
   {
     name: "AD Scientific Index",
@@ -396,7 +391,7 @@ export const professionalProfiles = [
     label: "Profile",
     icon: "GH",
     bgColor: "#181717",
-    url: "https://github.com/"
+    url: "https://github.com/TRAVIKUMAR81/"
   }
 ];
 

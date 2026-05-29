@@ -23,13 +23,70 @@ export default function App() {
       <Hero image={profileImg} />
       <Highlights />
 
-      {/* About Section - spacing issue fixed by using a self-closing Section element */}
+      {/* About Section - enriched with structured highlights */}
       <Section
         id="about"
         eyebrow="About"
         title="A lifetime in Computer Science"
-        subtitle="Two decades of academic excellence across eight reputed engineering institutions in India — with 56 international publications, a Ph.D. in progress at Anna University, and an enduring passion for teaching the future of computing."
-      />
+        subtitle="Two decades of academic excellence across eight reputed engineering institutions in India — with 63 international publications, a Ph.D. in progress at Anna University, and an enduring passion for teaching the future of computing."
+        className="pt-12 pb-12 px-6"
+      >
+        <div className="grid md:grid-cols-3 gap-6 mt-10 text-left">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="bg-white rounded-3xl p-6 border border-border shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-glow)] hover:-translate-y-0.5 transition-all duration-300 flex flex-col justify-between"
+          >
+            <div>
+              <div className="w-10 h-10 rounded-xl bg-[var(--brand-soft)] text-[var(--brand)] flex items-center justify-center text-lg font-bold mb-4">
+                👨‍🏫
+              </div>
+              <h3 className="font-bold text-base md:text-lg mb-2">Teaching Philosophy</h3>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Committed to student-centric learning by bridging theoretical computer science concepts with hands-on labs, engineering workshops, and real-world software project development.
+              </p>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="bg-white rounded-3xl p-6 border border-border shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-glow)] hover:-translate-y-0.5 transition-all duration-300 flex flex-col justify-between"
+          >
+            <div>
+              <div className="w-10 h-10 rounded-xl bg-[var(--brand-soft)] text-[var(--brand)] flex items-center justify-center text-lg font-bold mb-4">
+                🔍
+              </div>
+              <h3 className="font-bold text-base md:text-lg mb-2">Research Focus</h3>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Actively exploring machine learning applications, cyber security protocols, and internet-of-things (IoT) integrations, with 63 international publications and a Ph.D. in progress at Anna University.
+              </p>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="bg-white rounded-3xl p-6 border border-border shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-glow)] hover:-translate-y-0.5 transition-all duration-300 flex flex-col justify-between"
+          >
+            <div>
+              <div className="w-10 h-10 rounded-xl bg-[var(--brand-soft)] text-[var(--brand)] flex items-center justify-center text-lg font-bold mb-4">
+                💼
+              </div>
+              <h3 className="font-bold text-base md:text-lg mb-2">Industry Enablement</h3>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Certified by corporate leaders like Infosys, Wipro, and Virtusa to deliver specialized train-the-trainer (TTT) curriculum, preparing the next generation of engineers for technical careers.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </Section>
 
       {/* Flagship Training Areas */}
       <TrainingSection />
@@ -46,7 +103,6 @@ export default function App() {
             period: e.period,
             title: e.degree,
             subtitle: e.institution,
-            meta: e.score ? `Score · ${e.score}` : undefined,
           }))}
         />
       </Section>
@@ -182,7 +238,7 @@ export default function App() {
       <ActivitiesSection />
 
       {/* Achievements, Certifications & Seminars Section */}
-      <AchievementsSection />
+      <AchievementsSection className="pt-12 pb-2 px-6" />
 
       {/* Contact Section */}
       <Contact />
@@ -283,9 +339,14 @@ function ActivitiesSection() {
               <h3 className="text-lg font-bold text-foreground mb-1">
                 {act.role}
               </h3>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-muted-foreground font-semibold">
                 {act.institution}
               </p>
+              {act.description && (
+                <p className="text-xs text-muted-foreground mt-3 border-t border-slate-100 pt-2 leading-relaxed">
+                  {act.description}
+                </p>
+              )}
             </div>
           </motion.div>
         ))}

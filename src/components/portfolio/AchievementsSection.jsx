@@ -28,7 +28,7 @@ function HighlightedText({ text }) {
   return <span className="leading-relaxed" dangerouslySetInnerHTML={{ __html: highlighted }} />;
 }
 
-export function AchievementsSection() {
+export function AchievementsSection({ className }) {
   const [activeTab, setActiveTab] = useState("certifications");
   const [workshopTab, setWorkshopTab] = useState("organized");
   const [visibleCount, setVisibleCount] = useState(6);
@@ -45,6 +45,7 @@ export function AchievementsSection() {
   return (
     <Section
       id="achievements"
+      className={className}
       eyebrow="Credentials"
       title="Achievements & Enablement"
       subtitle="Industry-grade certifications, Train-the-Trainer (TTT) credentials, and active participation in academic workshops."
@@ -84,7 +85,7 @@ export function AchievementsSection() {
         </div>
 
         {/* Content Panels */}
-        <div className="min-h-[300px]">
+        <div>
           <AnimatePresence mode="wait">
             {/* Certifications Tab */}
             {activeTab === "certifications" && (

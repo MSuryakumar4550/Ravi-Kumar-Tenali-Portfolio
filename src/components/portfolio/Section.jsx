@@ -6,9 +6,10 @@ export function Section({
   title,
   subtitle,
   children,
+  className = "py-12 px-6",
 }) {
   return (
-    <section id={id} className="py-24 px-6 scroll-mt-20">
+    <section id={id} className={`${className} scroll-mt-20`}>
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 24 }}

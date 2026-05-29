@@ -151,22 +151,22 @@ export function Navbar() {
         </a>
 
         {/* Desktop Navigation Links */}
-        <ul className="hidden lg:flex gap-8 text-sm font-semibold relative">
+        <ul className="hidden lg:flex gap-2 text-sm font-semibold relative">
           {NAV.map((l) => {
             const isActive = activeSection === l.href.substring(1);
             return (
-              <li key={l.href} className="relative py-1">
+              <li key={l.href} className="relative">
                 <a
                   href={l.href}
-                  className={`relative transition-colors duration-300 ${
-                    isActive ? "text-[var(--brand)] font-extrabold" : "text-foreground/80 hover:text-[var(--brand)]"
+                  className={`relative z-10 px-4 py-2 rounded-xl block transition-all duration-300 ${
+                    isActive ? "text-white font-black scale-102" : "text-foreground/80 hover:text-[var(--brand)]"
                   }`}
                 >
                   {l.label}
                   {isActive && (
                     <motion.div
                       layoutId="activeNavIndicator"
-                      className="absolute -bottom-1.5 left-0 right-0 h-[2px] bg-[var(--brand)] rounded-full"
+                      className="absolute inset-0 bg-[var(--brand)] rounded-xl -z-10 shadow-sm"
                       transition={{ type: "spring", stiffness: 300, damping: 25 }}
                     />
                   )}
@@ -289,7 +289,7 @@ export function Hero({ image }) {
           className="text-center md:text-left text-white"
         >
           <p className="text-sm md:text-base font-semibold tracking-wide text-white/90">
-            Educator &nbsp;|&nbsp; Researcher &nbsp;|&nbsp; Senior Technical Trainer
+            Educator &nbsp;|&nbsp; Mentor &nbsp;|&nbsp; Researcher &nbsp;|&nbsp; Senior Technical Trainer
           </p>
           <h1 className="mt-3 text-5xl md:text-7xl font-bold tracking-tight leading-[1.05] drop-shadow-sm">
             Mr. Tenali Ravi Kumar
@@ -298,7 +298,7 @@ export function Hero({ image }) {
             D.EC.E, B.Tech(CSE), M.Tech(CSE), (Ph.D.), MCSI, LMISTE, AMIRED, LMISRD, MCSTA.
           </p>
           <h2 className="mt-3 text-xl md:text-2xl font-semibold text-white/95">
-            Assistant Professor (Senior Grade) · Ph.D. Scholar
+            Assistant Professor (Senior Grade)
           </h2>
           <p className="mt-4 text-white/90 md:text-lg leading-relaxed max-w-2xl">
             {TAGS.join("  •  ")}
@@ -334,7 +334,7 @@ const HIGHLIGHTS = [
   },
   {
     icon: "🏆",
-    value: 56,
+    value: 63,
     suffix: "",
     padZero: false,
     label: "Publications",
@@ -342,7 +342,7 @@ const HIGHLIGHTS = [
   },
   {
     icon: "💡",
-    value: 2,
+    value: 7,
     suffix: "",
     padZero: true,
     label: "Patents Published",

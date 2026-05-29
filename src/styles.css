@@ -177,3 +177,13 @@
     color: var(--color-foreground);
   }
 }
+
+.btn-premium-glow {
+  background: linear-gradient(90deg, #4BB8FA 0%, #7FD0FF 25%, #ffffff 50%, #7FD0FF 75%, #4BB8FA 100%);
+  background-size: 200% auto;
+  animation: shimmer 6s linear infinite;
+  transition: all 0.3s ease;
+}
+.btn-premium-glow:hover {
+  animation: shimmer 2s linear infinite;
+}
