@@ -217,7 +217,7 @@ export function PublicationsSection() {
                             {meta.abbr}
                           </span>
                         )}
-                        {activeTab === "journals" && item.id >= 15 && item.id <= 44 && (
+                        {activeTab === "journals" && item.id >= 15 && item.id <= 39 && (
                           <span className="px-2.5 py-0.5 rounded-md text-[10px] font-extrabold uppercase bg-orange-50 border border-orange-200 text-[#f36c21] shadow-sm">
                             Scopus
                           </span>
