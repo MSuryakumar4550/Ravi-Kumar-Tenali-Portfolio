@@ -1,10 +1,12 @@
 import { motion } from "motion/react";
+import { Github } from "lucide-react";
 import profileImg from "./assets/profile.jpg";
 import { Hero, Highlights, Navbar } from "./components/portfolio/Hero";
 import { Section, Timeline } from "./components/portfolio/Section";
 import { Contact } from "./components/portfolio/Contact";
 import { PublicationsSection } from "./components/portfolio/PublicationsSection";
 import { AchievementsSection } from "./components/portfolio/AchievementsSection";
+import { VisitorCounter } from "./components/portfolio/VisitorCounter";
 import {
   education,
   experience,
@@ -244,8 +246,13 @@ export default function App() {
       <Contact />
 
       <footer className="py-8 px-6 border-t border-border bg-white">
-        <div className="max-w-6xl mx-auto text-center text-sm text-muted-foreground font-semibold">
-          © {new Date().getFullYear()} {profile.name}. All rights reserved.
+        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left text-sm text-muted-foreground font-semibold">
+          <div>
+            © {new Date().getFullYear()} {profile.name}. All rights reserved.
+          </div>
+          <div className="flex items-center justify-center">
+            <VisitorCounter />
+          </div>
         </div>
       </footer>
     </main>
