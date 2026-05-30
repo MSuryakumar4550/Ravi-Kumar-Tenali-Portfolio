@@ -1,6 +1,5 @@
 import { motion, AnimatePresence } from "motion/react";
 import { useEffect, useState, useRef } from "react";
-import { Github } from "lucide-react";
 
 const NAV = [
   { href: "#about", label: "About" },
@@ -210,17 +209,6 @@ export function Navbar() {
                     </a>
                   </li>
                 ))}
-                <li className="pt-2 border-t border-border/60 mt-2">
-                  <a
-                    href="https://github.com/TRAVIKUMAR81/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 py-2 text-[var(--brand)] hover:underline"
-                  >
-                    <Github className="w-4 h-4" />
-                    <span>GitHub Profile</span>
-                  </a>
-                </li>
               </ul>
             </motion.div>
           )}
@@ -327,15 +315,6 @@ export function Hero({ image }) {
               className="px-7 py-3 rounded-full font-semibold border-2 border-white text-white hover:bg-white hover:text-[var(--brand)] transition-all cursor-pointer"
             >
               View Experience
-            </a>
-            <a
-              href="https://github.com/TRAVIKUMAR81/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-7 py-3 rounded-full font-semibold bg-[#181717] hover:bg-[#2c2b2b] text-white hover:-translate-y-0.5 hover:shadow-[0_15px_40px_-10px_rgba(0,0,0,0.3)] transition-all cursor-pointer flex items-center gap-2"
-            >
-              <Github className="w-5 h-5" />
-              <span>GitHub</span>
             </a>
           </div>
         </motion.div>

@@ -3,22 +3,22 @@ import { Eye } from "lucide-react";
 import { motion } from "motion/react";
 
 export function VisitorCounter() {
-  const [count, setCount] = useState(null);
+  const [displayCount, setDisplayCount] = useState(1085);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     let isMounted = true;
     const project = "ravi-kumar-tenali-portfolio";
-    const counter = "visits";
     const storageKey = `portfolio_visited_${project}`;
+    const BASELINE = 1084;
 
     const fetchCounter = async () => {
       try {
         const isSessionViewed = sessionStorage.getItem(storageKey);
-        
-        let url = `https://api.counterapi.dev/v1/projects/${project}/counters/${counter}/up`;
+
+        let url = `https://api.counterapi.dev/v1/ravi-kumar-tenali-portfolio/visits/up`;
         if (isSessionViewed) {
-          url = `https://api.counterapi.dev/v1/projects/${project}/counters/${counter}`;
+          url = `https://api.counterapi.dev/v1/ravi-kumar-tenali-portfolio/visits`;
         }
 
         const response = await fetch(url);
@@ -26,9 +26,11 @@ export function VisitorCounter() {
           throw new Error("Counter API failed");
         }
         const data = await response.json();
-        
+
         if (isMounted) {
-          setCount(data.count);
+          const serverCount = data.count || 0;
+          setDisplayCount(serverCount + BASELINE);
+
           if (!isSessionViewed) {
             sessionStorage.setItem(storageKey, "true");
           }
@@ -39,13 +41,13 @@ export function VisitorCounter() {
         // Fallback: LocalStorage mock counter to never show error / zero.
         if (isMounted) {
           const localStored = localStorage.getItem(`local_visits_${project}`);
-          let localCount = localStored ? parseInt(localStored, 10) : 1084;
+          let localCount = localStored ? parseInt(localStored, 10) : (BASELINE + 1);
           if (!sessionStorage.getItem(storageKey)) {
             localCount += 1;
             localStorage.setItem(`local_visits_${project}`, localCount.toString());
             sessionStorage.setItem(storageKey, "true");
           }
-          setCount(localCount);
+          setDisplayCount(localCount);
           setLoading(false);
         }
       }
@@ -85,7 +87,7 @@ export function VisitorCounter() {
       <span className="text-xs font-semibold text-muted-foreground group-hover:text-foreground transition-colors duration-300">
         Visitors:{" "}
         <span className="font-bold text-[var(--brand)] tabular-nums">
-          {count ? count.toLocaleString() : "1,084"}
+          {displayCount.toLocaleString()}
         </span>
       </span>
     </motion.div>
