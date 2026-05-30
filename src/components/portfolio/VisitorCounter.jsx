@@ -15,10 +15,21 @@ export function VisitorCounter() {
     const fetchCounter = async () => {
       try {
         const isSessionViewed = sessionStorage.getItem(storageKey);
-
-        let url = `https://api.counterapi.dev/v1/ravi-kumar-tenali-portfolio/visits/up`;
-        if (isSessionViewed) {
+        const isDev = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+        
+        let url;
+        if (isDev) {
+          // Local development: Call API directly
           url = `https://api.counterapi.dev/v1/ravi-kumar-tenali-portfolio/visits`;
+          if (!isSessionViewed) {
+            url += `/up`;
+          }
+        } else {
+          // Production: Call our first-party Vercel Serverless Function proxy (bypasses adblockers)
+          url = `/api/counter`;
+          if (!isSessionViewed) {
+            url += `?increment=true`;
+          }
         }
 
         const response = await fetch(url);
@@ -26,11 +37,11 @@ export function VisitorCounter() {
           throw new Error("Counter API failed");
         }
         const data = await response.json();
-
+        
         if (isMounted) {
           const serverCount = data.count || 0;
           setDisplayCount(serverCount + BASELINE);
-
+          
           if (!isSessionViewed) {
             sessionStorage.setItem(storageKey, "true");
           }
