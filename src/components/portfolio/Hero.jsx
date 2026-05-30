@@ -152,44 +152,30 @@ export function Navbar() {
         </a>
 
         {/* Desktop Navigation Links */}
-        <div className="hidden lg:flex items-center gap-4">
-          <ul className="flex gap-2 text-sm font-semibold relative">
-            {NAV.map((l) => {
-              const isActive = activeSection === l.href.substring(1);
-              return (
-                <li key={l.href} className="relative">
-                  <a
-                    href={l.href}
-                    className={`relative z-10 px-4 py-2 rounded-xl block transition-all duration-300 ${
-                      isActive ? "text-white font-black scale-102" : "text-foreground/80 hover:text-[var(--brand)]"
-                    }`}
-                  >
-                    {l.label}
-                    {isActive && (
-                      <motion.div
-                        layoutId="activeNavIndicator"
-                        className="absolute inset-0 bg-[var(--brand)] rounded-xl -z-10 shadow-sm"
-                        transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                      />
-                    )}
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
-          <div className="h-5 w-px bg-border/80" />
-          <motion.a
-            href="https://github.com/TRAVIKUMAR81/"
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.1, y: -1 }}
-            whileTap={{ scale: 0.95 }}
-            className="p-2 rounded-xl border border-border bg-slate-50 hover:bg-white hover:border-[var(--brand)] hover:text-[var(--brand)] text-foreground/80 transition-all duration-300 flex items-center justify-center cursor-pointer"
-            title="GitHub Profile"
-          >
-            <Github className="w-5 h-5" />
-          </motion.a>
-        </div>
+        <ul className="hidden lg:flex gap-2 text-sm font-semibold relative">
+          {NAV.map((l) => {
+            const isActive = activeSection === l.href.substring(1);
+            return (
+              <li key={l.href} className="relative">
+                <a
+                  href={l.href}
+                  className={`relative z-10 px-4 py-2 rounded-xl block transition-all duration-300 ${
+                    isActive ? "text-white font-black scale-102" : "text-foreground/80 hover:text-[var(--brand)]"
+                  }`}
+                >
+                  {l.label}
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeNavIndicator"
+                      className="absolute inset-0 bg-[var(--brand)] rounded-xl -z-10 shadow-sm"
+                      transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                    />
+                  )}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
 
         {/* Hamburger Mobile Toggle Button */}
         <button
